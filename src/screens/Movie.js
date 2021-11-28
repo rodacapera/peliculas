@@ -27,16 +27,16 @@ export default function Movies(props){
 
     useEffect(() => {
         dispatch(searchMovie({ id }));
-        // getMovieByIdApi(id).then((response) => {
-        //     setMovie(response);
-        // })
+        getMovieByIdApi(id).then((response) => {
+            setMovie(response);
+        })
     }, [])
 
     useEffect(() => {
-        // getMovieByIdApi(id).then((response) => {
-        //     setMovie(response);
-        // });
-    }, [])
+        getMovieByIdApi(id).then((response) => {
+            setMovie(response);
+        });
+    }, [getMovieByIdApi])
     
     if(!movie)return null;
 

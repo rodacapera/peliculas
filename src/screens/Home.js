@@ -17,6 +17,7 @@ export default function Home(props){
 
     useEffect(() => {
         getNewsMoviesApi().then((response) => {
+            console.log('response', response);
             setnewMovies(response.results);
         });
     }, []);

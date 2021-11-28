@@ -11,10 +11,6 @@ const ITEM_WIDTH = Math.round(width * 0.7);
 
 export default function CarouselVertical(props){
     const { data, navigation } = props;
-    
-    return (
-        <Carousel layout={"default"} data={data} renderItem={(item) => <RenderItem data={item} navigation={navigation} />} sliderWidth={width} itemWidth={ITEM_WIDTH} />
-    );
 
     function RenderItem (props){
         const { data, navigation } = props;
@@ -23,9 +19,14 @@ export default function CarouselVertical(props){
         const imageUrl = `${BASE_PATH_IMG}/w500${poster_path}`;
         
         useEffect(() => {
+            let mounted = true;
             getGenreMovieApi(genre_ids).then((response) => {
-                setGenres(response);   
+                if (mounted){
+                    setGenres(response);
+                }   
             });
+
+            return () => mounted = false;
         }, []);
         
         const onNavigation = () => {
@@ -37,7 +38,7 @@ export default function CarouselVertical(props){
                 <View style={styles.card}>
                     <Image style={styles.image} source={{uri: imageUrl}}/>
                     <Title style={styles.title}>{title}</Title>
-                    <View style={styles.genres}>                        
+                    <View style={styles.genres}>                  
                         {genres && 
                             map(genres, (genre, index) => (
                                 <Text key={index} style={styles.genre}>
@@ -51,6 +52,10 @@ export default function CarouselVertical(props){
             </TouchableWithoutFeedback>
         );
     }
+
+    return (
+        <Carousel layout={"default"} data={data} renderItem={(item) => <RenderItem data={item} navigation={navigation} />} sliderWidth={width} itemWidth={ITEM_WIDTH} />
+    );
 }
 const styles = StyleSheet.create({
     card:{
