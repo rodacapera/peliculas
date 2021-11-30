@@ -13,6 +13,9 @@ export default function Navigation(){
             <Drawer.Screen 
                 name="app" 
                 component={StackNavigation}
+                options={{
+                    headerShown: false
+                }}
             />
         </Drawer.Navigator>
     )

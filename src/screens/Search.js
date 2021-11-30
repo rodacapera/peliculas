@@ -17,7 +17,7 @@ import Spinner from 'react-native-loading-spinner-overlay';
 export default function Search(props){
     const { navigation } = props;
     const [movies, setMovies] = useState(null);
-    const [search, setSearch] = useState("");
+    const [search, setSearch] = useState(null);
     const [spinner, setSpinner] = useState(false);
 
     const dispatch = useDispatch();
@@ -29,6 +29,7 @@ export default function Search(props){
     useEffect(() => {      
         console.log('buscando');  
         console.log(search);
+        // setSpinner(true);
         if(size(search) > 2) {
             dispatch(searchMovie({ search }));
             setMovies(moviesR);            
@@ -47,17 +48,12 @@ export default function Search(props){
         console.log('render');
         console.log(movies);
         if(movies) {    
-            setSpinner(false);
+            // setSpinner(false);
             return map(movies, (movie, index) => (
                 <Movie key={index} movie={movie} navigation={navigation} />
             ));
-        }else{
-            console.log('setspinner');
-            setSpinner(true);
-        }  
+        }
     }
-
-    
 
     // useEffect(() => {
     //     console.log(search);
