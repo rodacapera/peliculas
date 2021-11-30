@@ -33,10 +33,6 @@ _A continuación se enlistan las herramientas con las que fue contruida la aplic
 * [Npm](https://www.npmjs.com/) - Manejador de dependencias
 * [Android Stdio](https://developer.android.com/?hl=es-419) - Usado para instalar dependencias de android y poder compilar el proyecto 
 
-## Contribuyendo 🖇️
-
-Por favor lee el [CONTRIBUTING.md](https://gist.github.com/villanuevand/xxxxxx) para detalles de nuestro código de conducta, y el proceso para enviarnos pull requests.
-
 ## Versionado 📌
 
 Usamos [Github](https://github.com/) para el versionado. Para todas las versiones disponibles, mira los [tags en este repositorio](https://github.com/rodacapera/peliculas).
